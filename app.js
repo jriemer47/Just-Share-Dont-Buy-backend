@@ -12,10 +12,15 @@ app.use(bodyParser.json())
 
 const reservationsRouters = require('./src/routers/reservations.js')
 app.use('/reservations', reservationsRouters)
+////////////////////////////
+const itemsRouter = require('./src/routers/items.js')
+app.use('/items', itemsRouter)
 
 app.use((err, req, res, next) => {
   const status = err.status
-  res.status(status).json({ error: err })
+  res.status(status).json({
+    error: err
+  })
 })
 
 app.listen(port, () => {
